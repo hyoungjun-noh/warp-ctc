@@ -4,6 +4,7 @@ from tensorflow.python.framework import ops
 from tensorflow.python.ops.nn_grad import _BroadcastMul
 
 lib_file = imp.find_module('kernels', __path__)[1]
+# lib_file = open(__path__[0] + '/kernels.cpython-36m-darwin.so', 'rb')
 _warpctc = tf.load_op_library(lib_file)
 
 def ctc(activations, flat_labels, label_lengths, input_lengths,
