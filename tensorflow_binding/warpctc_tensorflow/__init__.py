@@ -2,6 +2,13 @@ import imp
 import tensorflow as tf
 from tensorflow.python.framework import ops
 from tensorflow.python.ops.nn_grad import _BroadcastMul
+import os
+
+# print('__path__:', __path__)
+# print('__LD_LIBRARY_PATH:', os.environ['LD_LIBRARY_PATH'])
+
+if 'LD_LIBRARY_PATH' in os.environ:
+    __path__.extend(os.environ['LD_LIBRARY_PATH'].split(':'))
 
 lib_file = imp.find_module('kernels', __path__)[1]
 # lib_file = open(__path__[0] + '/kernels.cpython-36m-darwin.so', 'rb')
